@@ -24,9 +24,10 @@ nb-configuration.xml
 .nb-gradle/
 
 # Eclipse
-.classpath
-.project
+#.classpath
+#.project
 .settings/
+.metadata
 
 # Intellij
 .idea/
