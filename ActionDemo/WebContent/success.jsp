@@ -5,12 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Success</title>
 </head>
-<% 
-	User user = (User) request.getAttribute("user");
-%>
 <body>
-<h1>Welcome <%= user.getUsername() %></h1>
+<h1>Welcome Message <%= request.getParameter("message") %></h1>
 </body>
 </html>
