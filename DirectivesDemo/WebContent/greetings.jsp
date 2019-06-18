@@ -20,7 +20,7 @@
 %>
 <body>
 <div id="header" style="background-color: blue; height: 20%;">
-<%@ include file"header.html" %>
+<%@ include file="header.html" %>
 </div>
 Current Date <%= date %>
 <div id="content" style="background-color: gray; height: 70%; text-align: center"></div>
