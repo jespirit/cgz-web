@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +32,7 @@ public class Department extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
+		StringBuilder sb = new StringBuilder();
 		
 		Connection conn = null;
 		Statement cstmt = null;
@@ -51,10 +53,20 @@ public class Department extends HttpServlet {
 	
 			// CALL THE PL/SQL FUNCTION
 			ResultSet resultSet = cstmt.executeQuery("SELECT * FROM department");
+			
+			sb.append("<ol>");
 	
 			while (resultSet.next()) {
-				out.println(resultSet.getInt(1) + ": " + resultSet.getString(2));
+				sb.append("<li>" + resultSet.getString("name") + "</li>");
 			}
+			
+			sb.append("</ol>");
+			
+			// send JSON
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			out.print(sb.toString());
+			out.flush();  // commit
 		}
 		catch (SQLException e) {
 			System.err.println("SQL Exception caught: " + e.getMessage());

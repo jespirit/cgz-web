@@ -42,15 +42,13 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    
+    <h1>Departments</h1>
 
     <div class="container">
       <div class="row">
           <div class="col-md-12">
             <div class="well" id="data">
-            <%        		
-         		RequestDispatcher dispatcher = request.getRequestDispatcher("Department");
-        		dispatcher.include(request, response);
-            %>
             </div>
           </div>
       </div>
@@ -61,5 +59,8 @@
 
     <!-- Latest compiled and minified Bootstrap 3.3.7 JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <!-- custom JavaScript -->
+  	<script src="main.js"></script>
 </body>
 </html>
