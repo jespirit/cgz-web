@@ -29,10 +29,10 @@ Gender
 <input type="radio" name="gender" value="female" />Male<br />
 
 Hobbies
-<input type="checkbox" name="cb_dance" value="dance" />Dance
-<input type="checkbox" name="cb_music" value="music" />Music
-<input type="checkbox" name="cb_sports" value="sports" />Sports
-<input type="checkbox" name="cb_painting" value="painting" />Painting
+<input type="checkbox" name="hobbies" value="dance" />Dance
+<input type="checkbox" name="hobbies" value="music" />Music
+<input type="checkbox" name="hobbies" value="sports" />Sports
+<input type="checkbox" name="hobbies" value="painting" />Painting
 	
 Country
 <select name="country">
