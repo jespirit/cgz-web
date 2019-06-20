@@ -45,7 +45,9 @@ public class FriendRequest extends HttpServlet {
 //		RequestDAO rDao = new RequestDAO();
 //		rDao.requestFriendShip(Integer.valueOf(fromId), Integer.valueOf(toId));
 		
-		System.out.println(fromId + ", " + toId);
+//		response.sendRedirect("views/friends.jsp");
+		
+		System.out.println("[POST] FriendRequest: " + fromId + ", " + toId);
 	}
 
 }

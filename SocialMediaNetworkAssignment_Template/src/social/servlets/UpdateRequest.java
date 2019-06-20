@@ -1,31 +1,25 @@
 package social.servlets;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import social.dao.FriendsDAO;
 import social.dao.RequestDAO;
-import social.model.Friends;
-import social.model.Request;
 
 /**
- * Servlet implementation class Notifications
+ * Servlet implementation class RequestFriendship
  */
-@WebServlet("/Notifications")
-public class NotificationsServlet extends HttpServlet {
+@WebServlet("/RequestFriendship")
+public class UpdateRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NotificationsServlet() {
+    public UpdateRequest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,18 +29,7 @@ public class NotificationsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		HttpSession session = request.getSession();
-		
-		int userId = Integer.valueOf(request.getParameter("userid"));
-		//int userId = (int) session.getAttribute("userId");
-		
-		RequestDAO rDao = new RequestDAO();
-
-		List<Request> myRequests = rDao.getRequest_To(userId);
-		session.setAttribute("myrequests", myRequests);
-		
-		response.sendRedirect("views/notifications.jsp");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -55,6 +38,16 @@ public class NotificationsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		String requestId = request.getParameter("requestId");
+		String reply = request.getParameter("reply");
+		
+//		RequestDAO rDao = new RequestDAO();
+//		rDao.requestUpdate(Integer.valueOf(requestId), Integer.valueOf(reply));
+		
+//		response.sendRedirect("views/notifications.jsp");
+		
+		System.out.println("[POST] UpdateRequestrequest: " + requestId + ", " + reply);
 	}
 
 }

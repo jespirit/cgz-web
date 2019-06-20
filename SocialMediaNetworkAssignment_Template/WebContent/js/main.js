@@ -16,6 +16,21 @@ function sendFriendRequest(from, to) {
         });
 }
 
+function acceptOrDeclineRequest(requestId, reply) {
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/SocialMediaNetworkAssignment/UpdateRequest',
+        data: { 'requestId': requestId, 'reply': reply }
+    })
+        .done(function(data) {
+        	console.log("Success: Friend request was accepted/declined.");
+        })
+        .fail(function(err) {
+        	console.log("Log: Failed to update friend request");
+        });
+}
+
 $(document).ready(function() {
     console.log("jQuery is ready!");
 });

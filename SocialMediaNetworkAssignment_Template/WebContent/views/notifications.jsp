@@ -24,5 +24,30 @@
 <%= "<img src='../images/img" + userId + ".png'/>" %>
 </div>
 
+<h2>Friend Requests</h2>
+
+<table>
+<%
+	RequestDAO rDao = new RequestDAO();
+	
+	List<Request> myRequests = (List<Request>) session.getAttribute("myrequests");
+	
+	if (myRequests != null) {
+		out.print("myrequests: " + myRequests.size());
+		for (int i=0; i<myRequests.size(); i++) {
+			Request req = myRequests.get(i);
+			User friend = req.getUser_request();
+
+			out.print("<tr><td>" + friend.getFirst_name() + "</td>" +
+					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", -1)>Decline</button></td>" +
+					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", 1)>Accept Friend</button></td>" +  
+				"</tr>");
+		}
+	}
+	else {
+		out.print("<h2>No notifications</h2>");
+	}
+%>
+</table>
 </body>
 </html>
