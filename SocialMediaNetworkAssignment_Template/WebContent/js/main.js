@@ -16,12 +16,12 @@ function sendFriendRequest(from, to) {
         });
 }
 
-function acceptOrDeclineRequest(requestId, reply) {
+function acceptOrDeclineRequest(sourceId, targetId, requestId, reply) {
 
     $.ajax({
         type: 'POST',
         url: 'http://localhost:8080/SocialMediaNetworkAssignment/UpdateRequest',
-        data: { 'requestId': requestId, 'reply': reply }
+        data: { 'sourceId': sourceId, 'targetId': targetId, 'requestId': requestId, 'reply': reply }
     })
         .done(function(data) {
         	console.log("Success: Friend request was accepted/declined.");

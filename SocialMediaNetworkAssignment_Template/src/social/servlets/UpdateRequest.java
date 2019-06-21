@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import social.dao.FriendsDAO;
 import social.dao.RequestDAO;
+import social.model.Friends;
+import social.model.User;
 
 /**
  * Servlet implementation class RequestFriendship
  */
-@WebServlet("/RequestFriendship")
+@WebServlet("/UpdateRequest")
 public class UpdateRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,17 +40,29 @@ public class UpdateRequest extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		
-		String requestId = request.getParameter("requestId");
-		String reply = request.getParameter("reply");
+		int requestId = Integer.valueOf(request.getParameter("requestId"));
+		int reply = Integer.valueOf(request.getParameter("reply"));
+		int sourceId = Integer.valueOf(request.getParameter("sourceId"));
+		int targetId = Integer.valueOf(request.getParameter("targetId"));
 		
-//		RequestDAO rDao = new RequestDAO();
-//		rDao.requestUpdate(Integer.valueOf(requestId), Integer.valueOf(reply));
+		RequestDAO rDao = new RequestDAO();
+		FriendsDAO fDao = new FriendsDAO();
 		
-//		response.sendRedirect("views/notifications.jsp");
+		Friends newFriend = new Friends();
+		User tempUser = new User();
+		tempUser.setUser_id(sourceId);
 		
-		System.out.println("[POST] UpdateRequestrequest: " + requestId + ", " + reply);
+		newFriend.setUser_request(targetId);
+		newFriend.setUser_accepted(tempUser);
+		newFriend.setRequest_id(requestId);
+		
+		fDao.confirmFriendShip(newFriend);
+		rDao.requestUpdate(requestId, reply);
+		
+		response.sendRedirect("views/notifications.jsp");
+		
+		System.out.println("[POST] UpdateRequest: " + requestId + ", " + reply);
 	}
 
 }

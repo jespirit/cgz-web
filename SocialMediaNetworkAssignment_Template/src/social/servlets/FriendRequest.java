@@ -42,10 +42,10 @@ public class FriendRequest extends HttpServlet {
 		String fromId = request.getParameter("from");
 		String toId = request.getParameter("to");
 		
-//		RequestDAO rDao = new RequestDAO();
-//		rDao.requestFriendShip(Integer.valueOf(fromId), Integer.valueOf(toId));
+		RequestDAO rDao = new RequestDAO();
+		rDao.requestFriendShip(Integer.valueOf(fromId), Integer.valueOf(toId));
 		
-//		response.sendRedirect("views/friends.jsp");
+		response.sendRedirect("views/friends.jsp");
 		
 		System.out.println("[POST] FriendRequest: " + fromId + ", " + toId);
 	}

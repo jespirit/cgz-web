@@ -30,7 +30,7 @@
 <%
 	RequestDAO rDao = new RequestDAO();
 	
-	List<Request> myRequests = (List<Request>) session.getAttribute("myrequests");
+	List<Request> myRequests = rDao.getRequest_To(userId);
 	
 	if (myRequests != null) {
 		out.print("myrequests: " + myRequests.size());
@@ -39,8 +39,8 @@
 			User friend = req.getUser_request();
 
 			out.print("<tr><td>" + friend.getFirst_name() + "</td>" +
-					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", -1)>Decline</button></td>" +
-					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", 1)>Accept Friend</button></td>" +  
+					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", -1)'>Decline</button></td>" +
+					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", 1)'>Accept Friend</button></td>" +  
 				"</tr>");
 		}
 	}
@@ -49,5 +49,11 @@
 	}
 %>
 </table>
+
+<!-- Latest compiled and minified jQuery 3.2.1 JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
+
+<!-- custom JavaScript -->
+<script src="../js/main.js"></script>
 </body>
 </html>

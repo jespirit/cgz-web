@@ -38,7 +38,7 @@ public class NotificationsServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		int userId = Integer.valueOf(request.getParameter("userid"));
+		int userId = Integer.valueOf(request.getParameter("userId"));
 		//int userId = (int) session.getAttribute("userId");
 		
 		RequestDAO rDao = new RequestDAO();
