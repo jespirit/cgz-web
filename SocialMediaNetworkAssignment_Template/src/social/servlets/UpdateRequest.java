@@ -51,14 +51,15 @@ public class UpdateRequest extends HttpServlet {
 		
 		Friends newFriend = new Friends();
 		User tempUser = new User();
-		tempUser.setUser_id(sourceId);
+		tempUser.setUser_id(targetId);
 		
-		newFriend.setUser_request(targetId);
+		newFriend.setUser_request(sourceId);
 		newFriend.setUser_accepted(tempUser);
 		newFriend.setRequest_id(requestId);
 		
-		fDao.confirmFriendShip(newFriend);
+		// Accept and Confirm friendship
 		rDao.requestUpdate(requestId, reply);
+		fDao.confirmFriendShip(newFriend);
 		
 		response.sendRedirect("views/notifications.jsp");
 		

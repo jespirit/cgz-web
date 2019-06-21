@@ -39,8 +39,8 @@
 			User friend = req.getUser_request();
 
 			out.print("<tr><td>" + friend.getFirst_name() + "</td>" +
-					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", -1)'>Decline</button></td>" +
-					"<td><button onclick='acceptOrDeclineRequest(" + req.getRequest_id() + ", 1)'>Accept Friend</button></td>" +  
+					"<td><button onclick='acceptOrDeclineRequest(" + friend.getUser_id() + ", " + userId + ", " + req.getRequest_id() + ", -1)'>Decline</button></td>" +
+					"<td><button onclick='acceptOrDeclineRequest(" + friend.getUser_id() + ", " + userId + ", " + req.getRequest_id() + ", 1)'>Accept Friend</button></td>" +  
 				"</tr>");
 		}
 	}
